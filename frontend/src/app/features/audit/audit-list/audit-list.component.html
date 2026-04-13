@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h5>Historique des actions</h5>
+</div>
+
+<!-- Filters -->
+<div class="filter-row">
+  <button [class]="selectedType === '' ? 'filter-btn active' : 'filter-btn'"
+          (click)="filter('')">Tous</button>
+  <button *ngFor="let t of types"
+          [class]="selectedType === t ? 'filter-btn active' : 'filter-btn'"
+          (click)="filter(t)">{{ t }}</button>
+</div>
+
+<div class="card">
+  <div *ngIf="loading" class="text-center p-4">Chargement...</div>
+  <table *ngIf="!loading" class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Utilisateur</th>
+        <th>Action</th>
+        <th>Description</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let audit of filtered">
+        <td>{{ audit.id }}</td>
+        <td>{{ audit.utilisateur?.email }}</td>
+        <td>
+          <span [class]="'audit-badge ' + getBadgeClass(audit.action)">
+            {{ audit.action }}
+          </span>
+        </td>
+        <td>{{ audit.description }}</td>
+        <td>{{ audit.date | date:'dd/MM/yyyy HH:mm' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
