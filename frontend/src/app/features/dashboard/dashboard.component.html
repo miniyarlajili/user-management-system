@@ -1,0 +1,83 @@
+<div class="dashboard">
+  <h5 class="page-title">
+    Bienvenue, {{ currentUser?.email }} 👋
+  </h5>
+
+  <!-- Metrics -->
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-icon blue">
+        <i class="bi bi-people-fill"></i>
+      </div>
+      <div class="metric-info">
+        <div class="metric-val">{{ totalUsers }}</div>
+        <div class="metric-label">Utilisateurs</div>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon green">
+        <i class="bi bi-person-check-fill"></i>
+      </div>
+      <div class="metric-info">
+        <div class="metric-val">{{ activeUsers }}</div>
+        <div class="metric-label">Actifs</div>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon purple">
+        <i class="bi bi-shield-fill"></i>
+      </div>
+      <div class="metric-info">
+        <div class="metric-val">{{ totalRoles }}</div>
+        <div class="metric-label">Rôles</div>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon orange">
+        <i class="bi bi-clock-history"></i>
+      </div>
+      <div class="metric-info">
+        <div class="metric-val">{{ recentAudits.length }}</div>
+        <div class="metric-label">Actions récentes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="section-title">Actions rapides</div>
+  <div class="quick-actions">
+    <a routerLink="/users/new" class="action-btn">
+      <i class="bi bi-person-plus"></i>
+      <span>Nouvel utilisateur</span>
+    </a>
+    <a routerLink="/roles" class="action-btn">
+      <i class="bi bi-shield-plus"></i>
+      <span>Gérer les rôles</span>
+    </a>
+    <a routerLink="/audit" class="action-btn">
+      <i class="bi bi-list-check"></i>
+      <span>Voir l'historique</span>
+    </a>
+    <a routerLink="/users" class="action-btn">
+      <i class="bi bi-people"></i>
+      <span>Tous les utilisateurs</span>
+    </a>
+  </div>
+
+  <!-- Recent Audit -->
+  <div class="section-title">Dernières actions</div>
+  <div class="audit-card">
+    <div *ngIf="recentAudits.length === 0" class="empty">
+      Aucune action enregistrée
+    </div>
+    <div *ngFor="let audit of recentAudits" class="audit-row">
+      <span [class]="'audit-badge ' + getBadgeClass(audit.action)">
+        {{ audit.action }}
+      </span>
+      <span class="audit-desc">{{ audit.description }}</span>
+      <span class="audit-date">
+        {{ audit.date | date:'dd/MM/yyyy HH:mm' }}
+      </span>
+    </div>
+  </div>
+</div>
