@@ -1,0 +1,60 @@
+<div class="page-header">
+  <h5>{{ isEdit ? 'Modifier utilisateur' : 'Nouvel utilisateur' }}</h5>
+  <a routerLink="/users" class="btn-back">
+    <i class="bi bi-arrow-left"></i> Retour
+  </a>
+</div>
+
+<div class="form-card">
+  <div class="alert-error" *ngIf="error">
+    <i class="bi bi-exclamation-circle"></i> {{ error }}
+  </div>
+
+  <div class="form-grid">
+    <div class="form-group">
+      <label>Nom complet *</label>
+      <input type="text" [(ngModel)]="user.nom"
+             placeholder="ex: Ahmed Ben Ali">
+    </div>
+
+    <div class="form-group">
+      <label>Email *</label>
+      <input type="email" [(ngModel)]="user.email"
+             placeholder="ahmed@example.com">
+    </div>
+
+    <div class="form-group">
+      <label>Mot de passe {{ isEdit ? '(laisser vide = inchangé)' : '*' }}</label>
+      <input type="password" [(ngModel)]="user.motDePasse"
+             placeholder="••••••••">
+    </div>
+
+    <div class="form-group">
+      <label>Rôle *</label>
+      <select [(ngModel)]="user.roleId">
+        <option [ngValue]="null">-- Sélectionner --</option>
+        <option *ngFor="let role of roles"
+                [ngValue]="role.id">{{ role.nom }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Statut</label>
+      <div class="toggle-row">
+        <input type="checkbox" [(ngModel)]="user.actif"
+               id="actif-toggle">
+        <label for="actif-toggle">
+          {{ user.actif ? 'Compte actif' : 'Compte inactif' }}
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <a routerLink="/users" class="btn-cancel">Annuler</a>
+    <button class="btn-save" (click)="save()" [disabled]="loading">
+      <i class="bi bi-check-lg"></i>
+      {{ loading ? 'Enregistrement...' : 'Enregistrer' }}
+    </button>
+  </div>
+</div>
