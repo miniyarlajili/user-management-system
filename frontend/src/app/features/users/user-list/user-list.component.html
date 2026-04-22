@@ -1,0 +1,58 @@
+<div class="page-header">
+  <h5>Gestion des utilisateurs</h5>
+  <!-- زر الإضافة للـ ADMIN فقط -->
+  <a *ngIf="isAdmin" routerLink="/users/new" class="btn-add">
+    <i class="bi bi-plus"></i> Nouvel utilisateur
+  </a>
+</div>
+
+<div class="card">
+  <div class="card-toolbar">
+    <input type="text" placeholder="Rechercher..."
+           class="search-input" (input)="search($event)">
+  </div>
+
+  <div *ngIf="loading" class="text-center p-4">
+    Chargement...
+  </div>
+
+  <table *ngIf="!loading" class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Rôle</th>
+        <th>Statut</th>
+        <!-- عمود Actions للـ ADMIN فقط -->
+        <th *ngIf="isAdmin">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of filtered">
+        <td>{{ user.id }}</td>
+        <td>{{ user.nom }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <span class="badge-role">{{ user.role }}</span>
+        </td>
+        <td>
+          <span [class]="user.actif ?
+                'badge-active' : 'badge-inactive'">
+            {{ user.actif ? 'Actif' : 'Inactif' }}
+          </span>
+        </td>
+        <td *ngIf="isAdmin">
+          <a [routerLink]="['/users/edit', user.id]"
+             class="btn-edit">
+            <i class="bi bi-pencil"></i>
+          </a>
+          <button class="btn-delete"
+                  (click)="delete(user.id!)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
