@@ -1,0 +1,250 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+* { box-sizing: border-box; }
+body { font-family: 'Segoe UI', sans-serif;
+       background: #f8f9fa; margin: 0; }
+
+.page-header {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  h5 { font-weight: 600; color: #0C447C; margin: 0; }
+}
+.btn-add {
+  background: #0C447C; color: #fff; padding: 8px 16px;
+  border-radius: 8px; text-decoration: none; font-size: 13px;
+  &:hover { background: #185FA5; color: #fff; }
+}
+.card {
+  background: #fff; border-radius: 10px;
+  border: 1px solid #e9ecef; overflow: hidden;
+}
+.card-toolbar {
+  padding: 1rem;
+  border-bottom: 1px solid #e9ecef;
+}
+.search-input {
+  padding: 8px 12px; border: 1px solid #dee2e6;
+  border-radius: 8px; font-size: 13px; width: 280px;
+  &:focus { outline: none; border-color: #0C447C; }
+}
+.table {
+  width: 100%; border-collapse: collapse;
+  th { background: #f8f9fa; font-size: 12px;
+       color: #666; padding: 10px 16px;
+       border-bottom: 1px solid #e9ecef; }
+  td { padding: 10px 16px; font-size: 13px;
+       border-bottom: 1px solid #f0f0f0; }
+  tr:hover td { background: #f8f9fa; }
+}
+.badge-role {
+  background: #e3f0fb; color: #0C447C;
+  padding: 2px 10px; border-radius: 20px; font-size: 11px;
+}
+.badge-active {
+  background: #d4edda; color: #155724;
+  padding: 2px 10px; border-radius: 20px; font-size: 11px;
+}
+.badge-inactive {
+  background: #e2e3e5; color: #383d41;
+  padding: 2px 10px; border-radius: 20px; font-size: 11px;
+}
+.btn-edit {
+  color: #0C447C; padding: 4px 8px;
+  border-radius: 6px; margin-right: 4px;
+  text-decoration: none; font-size: 15px;
+  &:hover { background: #e3f0fb; }
+}
+.btn-delete {
+  color: #dc3545; background: transparent;
+  border: none; padding: 4px 8px;
+  border-radius: 6px; cursor: pointer; font-size: 15px;
+  &:hover { background: #fff5f5; }
+}/* You can add global styles to this file, and also import other style files */
+/* Dashboard */
+.dashboard { }
+.page-title {
+  font-size: 18px; font-weight: 600;
+  color: #0C447C; margin-bottom: 1.5rem;
+}
+.metrics-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1rem; margin-bottom: 1.5rem;
+}
+.metric-card {
+  background: #fff; border-radius: 10px;
+  border: 1px solid #e9ecef;
+  padding: 1rem 1.2rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.metric-icon {
+  width: 48px; height: 48px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  &.blue { background: #e3f0fb; color: #0C447C; }
+  &.green { background: #d4edda; color: #155724; }
+  &.purple { background: #e8d5f5; color: #6f42c1; }
+  &.orange { background: #fff3cd; color: #856404; }
+}
+.metric-val {
+  font-size: 24px; font-weight: 700; color: #0C447C;
+}
+.metric-label {
+  font-size: 12px; color: #666;
+}
+.section-title {
+  font-size: 14px; font-weight: 600;
+  color: #333; margin: 1.5rem 0 0.75rem;
+}
+.quick-actions {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem; margin-bottom: 1.5rem;
+}
+.action-btn {
+  background: #fff; border: 1px solid #e9ecef;
+  border-radius: 10px; padding: 1rem;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 8px;
+  text-decoration: none; color: #333;
+  font-size: 13px; transition: all .2s;
+  i { font-size: 22px; color: #0C447C; }
+  &:hover { border-color: #0C447C;
+            background: #f0f7ff; color: #0C447C; }
+}
+.audit-card {
+  background: #fff; border-radius: 10px;
+  border: 1px solid #e9ecef; overflow: hidden;
+}
+.audit-row {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 10px 16px;
+  border-bottom: 1px solid #f0f0f0; font-size: 13px;
+  &:last-child { border-bottom: none; }
+}
+.audit-desc { flex: 1; color: #555; }
+.audit-date { font-size: 11px; color: #999; }
+
+/* Audit badges */
+.audit-badge {
+  font-size: 10px; padding: 2px 8px;
+  border-radius: 20px; font-weight: 500;
+  white-space: nowrap;
+}
+.badge-login { background: #fff3cd; color: #856404; }
+.badge-create { background: #d4edda; color: #155724; }
+.badge-update { background: #cce5ff; color: #004085; }
+.badge-delete { background: #f8d7da; color: #721c24; }
+.badge-logout { background: #e2e3e5; color: #383d41; }
+.badge-default { background: #e2e3e5; color: #383d41; }
+
+/* Forms */
+.form-card {
+  background: #fff; border-radius: 10px;
+  border: 1px solid #e9ecef; padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+.form-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1rem; margin-bottom: 1rem;
+}
+.form-group {
+  display: flex; flex-direction: column; gap: 5px;
+  label { font-size: 13px; font-weight: 500; color: #555; }
+  input, select {
+    padding: 9px 12px; border: 1px solid #dee2e6;
+    border-radius: 8px; font-size: 13px;
+    &:focus { outline: none; border-color: #0C447C; }
+  }
+}
+.toggle-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 0; font-size: 13px;
+}
+.form-actions {
+  display: flex; gap: 8px; justify-content: flex-end;
+}
+.btn-save {
+  background: #0C447C; color: #fff; padding: 9px 20px;
+  border: none; border-radius: 8px; font-size: 13px;
+  cursor: pointer;
+  &:hover { background: #185FA5; }
+  &:disabled { opacity: 0.7; cursor: not-allowed; }
+}
+.btn-cancel {
+  background: transparent; color: #666;
+  padding: 9px 20px; border: 1px solid #dee2e6;
+  border-radius: 8px; font-size: 13px; cursor: pointer;
+  text-decoration: none;
+  &:hover { background: #f8f9fa; }
+}
+.btn-back {
+  color: #0C447C; text-decoration: none; font-size: 13px;
+  display: flex; align-items: center; gap: 5px;
+  &:hover { text-decoration: underline; }
+}
+.alert-error {
+  background: #f8d7da; color: #721c24;
+  padding: 10px 14px; border-radius: 8px;
+  font-size: 13px; margin-bottom: 1rem;
+}
+
+/* Filters */
+.filter-row {
+  display: flex; gap: 8px; margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  padding: 6px 14px; border: 1px solid #dee2e6;
+  border-radius: 20px; background: #fff;
+  font-size: 12px; cursor: pointer; color: #555;
+  &:hover { border-color: #0C447C; color: #0C447C; }
+  &.active {
+    background: #0C447C; color: #fff;
+    border-color: #0C447C;
+  }
+}
+.empty {
+  padding: 2rem; text-align: center;
+  color: #999; font-size: 13px;
+}
+.alert-success {
+  background: #d4edda; color: #155724;
+  padding: 10px 14px; border-radius: 8px;
+  font-size: 13px; margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 6px;
+}
+.section-head {
+  font-size: 13px; font-weight: 600; color: #333;
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 6px;
+}
+.badge-perm {
+  background: #e8d5f5; color: #6f42c1;
+  padding: 2px 10px; border-radius: 20px; font-size: 11px;
+}
+.roles-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1rem; margin-top: 0.5rem;
+}
+.role-perm-card {
+  background: #fff; border: 1px solid #e9ecef;
+  border-radius: 10px; padding: 1rem;
+}
+.role-perm-header {
+  display: flex; align-items: center;
+  justify-content: space-between; margin-bottom: 0.75rem;
+}
+.perm-count {
+  font-size: 11px; color: #999;
+}
+.perm-tags {
+  display: flex; flex-wrap: wrap; gap: 5px;
+}
+.perm-tag {
+  background: #e8d5f5; color: #6f42c1;
+  padding: 2px 8px; border-radius: 20px; font-size: 11px;
+}
+.empty-tag {
+  font-size: 11px; color: #999; font-style: italic;
+}
